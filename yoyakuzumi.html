@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width">
+        <meta charset="UTF-8">
+        <title>マッチングが完了しました！</title>
+
+        <style>
+            /* ボディ全体のフォント、余白、背景色を設定 */
+            body {
+                font-family: 'Arial', sans-serif; /* フォントファミリーを設定 */
+                margin: 0; /* 外側余白（マージン）をなくす */
+                padding: 20px; /* 内側余白（パディング）を設定 */
+                background-color: #f0f0f0; /* 背景色を設定 */
+            }
+
+        
+            #header-logo {
+            height: 50px; /* ロゴの高さを50pxに設定 */
+            width: auto; /* 幅は自動調整 */
+            margin-right: 20px; /* ナビゲーションメニューとの間隔 */
+            border-radius: 10px; /* 角を丸める */
+            }
+    
+            header {
+            background-color: #333; /* ヘッダーの背景色 */
+            color: white; /* テキストの色 */
+            padding: 10px 0; /* 上下のパディングを少し調整 */
+            display: flex; /* フレックスボックスを使用してアイテムを横に並べる */
+            align-items: center; /* アイテムを垂直方向の中央に配置 */
+            justify-content: center; /* アイテムを水平方向の中央に配置 */
+            }  
+            
+            header nav ul {
+                list-style-type: none; /* リストのスタイルを無効化 */
+                padding: 0;
+                text-align: center; /* テキストを中央揃え */
+            }
+            
+            header nav ul li {
+                display: inline; /* リストアイテムを水平に表示 */
+                margin: 0 20px; /* リストアイテムのマージン */
+            }
+            
+            header nav ul li a {
+            text-decoration: none; /* リンクの下線を無効化 */
+            color: white; /* リンクのテキスト色 */
+            font-size: 30px; /* テキストのサイズを変更 */
+            }
+
+            .home_button {
+                display: inline-block; /* ブロックのような振る舞いをさせつつ、インライン要素として配置 */
+                background-color: #f90; /* オレンジ色の背景 */
+                color: white; /* テキストの色 */
+                padding: 5px 10px; /* 上下左右のパディング */
+                border-radius: 10px; /* 角の丸み */
+                text-decoration: none; /* テキストの下線を消す */
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 影を追加 */
+                transition: transform 0.3s ease, box-shadow 0.3s ease; /* 位置の変化と影にアニメーションを適用 */
+                font-size: 13px; /* テキストサイズを16pxに設定 */
+            }
+
+            .home_button:hover, .home_button:focus {
+                background-color: #bb6a00; /* ホバー時の背景色を変更 */
+            }
+    
+    
+        </style>
+    </head>
+    <body>
+        <header>
+            <img src="DALL·E 2024-04-06 13.41.42 - Create a logo design that combines the friendly and approachable style with the text _SHALL WE_ and includes a car within the design. The logo should .webp" alt="ロゴ" id="header-logo">
+            <nav>
+                <ul>
+                    <li><a href="#">Shall We</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <h1>マッチングが完了しました！</h1>
+        <a href="index.html" class="home_button">ホームに戻る</a>
+    </body>
+</html>
