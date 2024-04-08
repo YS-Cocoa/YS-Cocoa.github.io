@@ -3,7 +3,7 @@
     <head>
         <meta name="viewport" content="width=device-width">
         <meta charset="UTF-8">
-        <title>Shall We</title>
+        <title>あいのる</title>
         <style>
         
             #header-logo {
@@ -112,45 +112,22 @@
     <body>
 
         <header>
-            <img src="DALL·E 2024-04-06 13.41.42 - Create a logo design that combines the friendly and approachable style with the text _SHALL WE_ and includes a car within the design. The logo should .webp" alt="ロゴ" id="header-logo">
+            <img src="DALL·E 2024-04-08 11.10.09 - Create a friendly and approachable logo for 'AINORU'. The logo should include a compact car to signify light automobiles, and use warm color schemes t.webp" alt="ロゴ" id="header-logo">
             <nav>
                 <ul>
-                    <li><a href="#">Shall We</a></li>
+                    <li><a href="#">あいのる</a></li>
                 </ul>
             </nav>
         </header>
 
         <div class="noseru_joken">
-            <h3>乗せる条件を入力してください</h3>
+            <h3>神山高専生、乗せてもらうための情報を入力して！！！</h3>
             
             <!--フォーム入力エリア-->
             <div class="form-container">
-                <!--出発＆行き先-->
-                <form action="/submit_form" method="post">
-                    <label for="departure">集合場所： </label>
-                    <select id="departure" name="departure">
-                        <option value="-"></option>
-                        <option value="神山町役場">神山町役場</option>
-                        <option value="道の駅 温泉の里 神山">道の駅 温泉の里 神山</option>
-                        <option value="かまや">かまや</option>
-                        <option value="神山まるごと高専HOME前">神山まるごと高専HOME前</option>
-                    </select>
-        
-                    <label for="destination">→ 行き先：</label>
-                    <select id="destination" name="destination">
-                        <option value="-"></option>
-                        <option value="徳島駅">徳島駅</option>
-                        <option value="イルローザの森">イルローザの森</option>
-                        <option value="ローソン">ローソン</option>
-                        <option value="雨乞の滝">雨乞の滝</option>
-                        <option value="神通滝">神通滝</option>
-                    </select>
-    
-                    <br>
-                    <br>
-    
+                <form>
                     <!--こっから人数-->
-                    <label for="age">乗せられる人数:</label>
+                    <label for="age">乗りたい人数：</label>
                     <br>
                     <input type="number" id="age" name="age" min="0">
     
@@ -158,7 +135,14 @@
                     <br>
     
                     <!--乗車時間↓-->
-                    <label for="start_time">集合時間:</label>
+                    <label for="start_time">日付：</label>
+                    <br>
+                    <input type="date" id="hiduke" name="hiduke" required>
+
+                    <br>
+                    <br>
+
+                    <label for="start_time">集合する時間：</label>
                     <br>
                     <input type="time" id="start_time" name="start_time" required>
     
@@ -166,7 +150,7 @@
                     <br>
     
                     <!--コメント-->
-                    <label for="comment">コメント：</label>
+                    <label for="comment">あなたは、どんなお話ができますか？？：</label>
                     <br>
                     <textarea id="comment" name="comment"></textarea>
     
@@ -174,7 +158,7 @@
                     <br>
     
                     <!--送信-->
-                    <button type="submit" class="soushin">一覧に登録する</button>
+                    <button type="submit" class="soushin">乗せてリストに登録</button>
                 </form>
             </div>
         </div>
@@ -183,7 +167,10 @@
 
         
         <!-- ページの残りの内容 -->
-        <h3>乗りたい投稿が見つかったら、「乗りたい！！」ボタンを押してね</h3>
+        <h1><strong>おじいちゃんへ</strong></h1>
+        <h2>私たちは、神山高専生です。</h2>
+        <h2><strong>徳島駅</strong>まで、一緒に行きませんか？</h2>
+        <h2>道の駅で待ってます！！</h2>
 
         <div id="form-output"></div> <!-- ここにフォームの内容を表示します -->
         
@@ -193,23 +180,27 @@
                 // ページ読み込み時に保存されたフォームの内容を表示
                 displaySavedForms();
             });
+
             
             document.querySelector('form').addEventListener('submit', function(event) {
                 event.preventDefault(); // フォームの送信を阻止
             
                 // フォームの値を取得
                 var formData = {
-                    departure: document.getElementById('departure').value,
-                    destination: document.getElementById('destination').value,
+                    // departure: document.getElementById('departure').value,
+                    // destination: document.getElementById('destination').value,
+                    hiduke: document.getElementById('hiduke').value, // この行を修正
                     age: document.getElementById('age').value,
                     startTime: document.getElementById('start_time').value,
                     comment: document.getElementById('comment').value
                 };
             
-                // ローカルストレージから既存のフォームデータを取得して更新
+                // ローカルストレージへの保存と再表示
                 var formList = JSON.parse(localStorage.getItem('formList')) || [];
                 formList.push(formData);
                 localStorage.setItem('formList', JSON.stringify(formList));
+        
+                displaySavedForms(); // フォームの送信後にリストを再表示
             
                 // 更新したフォームデータを表示
                 displaySavedForms();
@@ -220,17 +211,17 @@
                 var outputHtml = formList.map(function(formData, index) {
                     return `
                         <div class="form-entry">
-                            <p>集合場所: ${formData.departure}</p>
-                            <p>行き先: ${formData.destination}</p>
-                            <p>乗せられる人数: ${formData.age}</p>
-                            <p>集合時間: ${formData.startTime}</p>
+                            <p>乗りたい人数: ${formData.age}</p>
+                            <p>日付: ${formData.hiduke}</p> <!-- この行も修正済み -->
+                            <p>集合する時間: ${formData.startTime}</p>
                             <p>コメント: ${formData.comment}</p>
-                            <a href="details.html?index=${index}"><button>乗りたい！！</button></a>
+                            <a href="details.html?index=${index}"><button>乗せたい！！</button></a>
                         </div>
                         <hr>
                     `;
                 }).join('');
                 document.getElementById('form-output').innerHTML = outputHtml;
+
             }
 
             
